@@ -1,0 +1,32 @@
+##########Series de Tiempo Múltiples#############
+
+####Bajar serie de datos de INEGI la ocupacion de as personas
+###Importar csv
+indi3 <- ts (read.csv(("C:\\Users\\SALA-C13\\Downloads\\3indicadores.csv"), header= F),frequency = 4, start = 2005);
+plot(indi3)
+plot(aggregate(indi3))
+class (indi3)
+desoparcial <- ts(indi3[,1],start = 2005, frequency = 4)
+asala <- ts(indi3[,2],start = 2005, frequency = 4)
+til1 <- ts(indi3[,3],start = 2005, frequency = 4)
+seriemultiple <- ts.intersect(desoparcial,asala,til1)##Serie de tiempo multiple con las 3 variables
+plot(seriemultiple, main="Serie de tiempo Múltiple", xlab="Años", ylab="Número de personas", col="blue")##Grafica de serie de tiempo múltiple
+seriemultiple
+
+###########Separar la serie dependiendo del análisis
+seriemultiple05.09 <- window(seriemultiple, start=c(2005,1), end=c(2009,4))
+seriemultiple10.15 <- window(seriemultiple, start=c(2010,1), end=c(2015,4))
+plot(seriemultiple05.09, main="Serie de tiempo Múltiple", xlab="Años", ylab="Número de personas", col="red")
+plot(seriemultiple10.15, main="Serie de tiempo Múltiple", xlab="Años", ylab="Número de personas", col="violet")
+start(seriemultiple); end(seriemultiple)
+
+##########Ejercicio###########
+###Base de datos: Indice de competitividad de Alemania	Argentina	Australia	Austria del 2001 al 2013
+compe <- ts (read.csv(("C:\\Users\\SALA-C13\\Downloads\\ejer_seriesmul.csv"), header= TRUE),frequency = 1, start = 2001);
+plot(compe)
+alema <- ts(compe[,1],start = 2001, frequency = 1)
+argen <- ts(compe[,2],start = 2001, frequency = 1)
+austra <- ts(compe[,3],start = 2001, frequency = 1)
+austri <- ts(compe[,4],start = 2001, frequency = 1)
+seriemul<- ts.intersect(alema,argen,austra,austri)##Serie de tiempo multiple con las 3 variables
+plot(seriemul, main="Indice de competitividad", xlab="Años", ylab="Paises", col="violet")
