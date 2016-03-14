@@ -21,6 +21,9 @@ plot(seriemultiple10.15, main="Serie de tiempo Múltiple", xlab="Años", ylab="N
 start(seriemultiple); end(seriemultiple)
 
 ##########Ejercicio###########
+####Por:
+#Jaqueline Arredondo Ramírez
+#Victor Hugo Valdes Cedillo
 ###Base de datos: Indice de competitividad de Alemania	Argentina	Australia	Austria del 2001 al 2013
 compe <- ts (read.csv(("C:\\Users\\SALA-C13\\Downloads\\ejer_seriesmul.csv"), header= TRUE),frequency = 1, start = 2001);
 plot(compe)
